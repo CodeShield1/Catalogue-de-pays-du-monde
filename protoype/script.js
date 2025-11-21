@@ -24,6 +24,11 @@ fetch('https://countries-api-hsak.onrender.com/api/countries')
           <h3>${element.name}</h3>
           `;
           container.appendChild(card)
+          card.addEventListener('click', function() {
+          window.location.href = `country-details.html?country=${element.name}`;
+
+       });
+
         })
       }
 
@@ -40,8 +45,4 @@ fetch('https://countries-api-hsak.onrender.com/api/countries')
         displaycountries(filtercountry)
       });
 
-      
-
-      
-    
-     
+  
