@@ -22,16 +22,19 @@ fetch('https://countries-api-hsak.onrender.com/api/countries')
           card.innerHTML=`
           <img src ="${element.flag}">
           <h3>${element.name}</h3>
+          <h42  >${element.continent}</h42>
+          <h4>${element.capital}</h4>
+
           `;
           container.appendChild(card)
           card.addEventListener('click', function() {
-          window.location.href = `country-details.html?country=${element.name}`;
+          sessionStorage.setItem("selectedCountry",JSON.stringify(element))
+          window.location.href = `country-details.html?countryr=${element.name}`;
 
        });
 
         })
       }
-
 
       select.addEventListener('change',function(){
         let continents = select.value
@@ -44,5 +47,31 @@ fetch('https://countries-api-hsak.onrender.com/api/countries')
         const filtercountry = allCountries.filter(c=>c.continent===continents);
         displaycountries(filtercountry)
       });
+
+
+      let search =document.getElementById("search");
+
+      search.addEventListener("input", function() {
+        let searchCountry = search.value.toLowerCase();
+        let cards = document.querySelectorAll(".card");
+        cards.forEach((card) => {
+          let titre=card.querySelector("h3").textContent.toLowerCase();
+
+          if(titre.includes(searchCountry)){
+            card.style.display = "block";
+          }else{
+            card.style.display = "none";
+         }
+      })
+
+      })
+
+        
+
+
+
+
+
+
 
   
