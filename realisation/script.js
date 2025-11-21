@@ -65,6 +65,17 @@ fetch('https://countries-api-hsak.onrender.com/api/countries')
       })
 
       })
+let popInput = document.getElementById("population");
+let popFilterBtn = document.getElementById("popFilterBtn");
+
+popFilterBtn.addEventListener('click', () => {
+    let minPopulation = popInput.value; 
+    if(!minPopulation) return; 
+    let filtered = allCountries.filter(c => c.population > minPopulation);
+    displaycountries(filtered);
+});
+
+
 
         
 
